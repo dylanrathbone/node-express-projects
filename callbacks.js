@@ -1,18 +1,19 @@
-function some_function(arg1, arg2, callback) {
-    // this generates a random number between
-    // arg1 and arg2
-    var my_number = Math.ceil(Math.random() *
-        (arg1 - arg2) + arg2);
-    // then we're done, so we'll call the callback and
-    // pass our result
-    callback(my_number);
-}
-// call the function
-some_function(5, 15,
+'use strict';
 
-    function(num) {
-        console.log("number is: "+ parseInt(num));
-        console.log("callback called! " + parseInt("10") + parseInt("30"));
-    }
+var fs = require('fs');
 
-);
+fs.readFile('dummy', 'utf8', (err, bigFileContents) => {
+    if (err) throw err;
+    console.log('*** PRINTING BIG FILE CONTENTS... ***');
+    console.log(bigFileContents);
+    console.log('*** FILE READ IS COMPLETE FOR BIGFILE ***');
+
+});
+
+fs.readFile('package.json', 'utf8', function (err, smallFileContents) {
+    console.log('*** PRINTING SMALL FILE CONTENTS... ***');
+    console.log(smallFileContents);
+    console.log('*** FILE READ IS COMPLETE FOR SMALL FILE ***');
+})
+
+console.log('Reading file contents... Please wait...');
